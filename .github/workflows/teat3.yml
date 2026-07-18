@@ -1,0 +1,33 @@
+name: Node.js Calculator CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run calculator script
+        run: |
+          node app.js add 5 3
+          node app.js sub 10 4
+          node app.js mul 6 7
+          node app.js div 12 4
+
+      - name: Show help output
+        run: npm run help
