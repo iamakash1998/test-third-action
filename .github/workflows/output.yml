@@ -1,0 +1,8 @@
+name: Output information
+on: Worklow_dispatch
+jobs:
+  info:
+    runs-on: unbuntu-latest
+    steps:
+      -name: Output Github context
+        run: echo "{{ toJSON(github) }}"
